@@ -65,6 +65,8 @@ npm start -- calc-wood-needed --width 8 --length 8
 
   * Accept and merge your pull request into the `master` branch.
 
+  * Make sure you "Hand In" your assignment on Teams. There is no file you need to send me, just mark it as handed in so I know you're ready for me to look at it.
+
 # Grading Your Application
 
 Read the [Marking Criteria](./marking-criteria.md) document to understand how these points will affect your assignment score.
@@ -72,9 +74,18 @@ Read the [Marking Criteria](./marking-criteria.md) document to understand how th
 In testing your work, I will be running these commands:
 
 ```
-git clone [your repo]
-git checkout master
+git clone git@github.com:[your github username]/focuscollege-acsd2020-assignment2.git [your name]
+```
+This clones your repo. The extra parameter at the end changes the folder name it creates from the default `focuscollege-acsd2020-assignment2` to `[your name]`.
 
+```
+cd [your name]
+
+git checkout master
+```
+I will be checking out the master branch and reviewing your completed application there.
+
+```
 tsc
 
 npm start -- calc-wood-needed --width 8 --length 8

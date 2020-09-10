@@ -3,9 +3,17 @@
 This respository is intended for the use of Focus College Students enrolled in the 
 Advanced Certificate of Software Development located in Kelowna, BC and Surrey, BC.
 
+---
+
+You can remove everything below the above line once you're ready to edit this file.
+
 ## Getting Started
 
 Please read the [Assignment Requirements](./assignment/assignment.md).
+
+## Deadline for Submissions
+
+The deadline for this assignment is 5PM on TUESDAY SEPTEMBER 15th, 2020.
 
 ## Notes
 

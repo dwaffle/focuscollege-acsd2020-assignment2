@@ -87,6 +87,7 @@ Each MAJOR marking criteria missed will subtract POINTS (not percent) on a scale
 Each MINOR marking criteria missed will subtract POINTS (not percent) on a scale: 
 
 | Occurance | Points Reduced |
+| --- | --- |
 | First criteria failure | -2 Points  |
 | Subsequent criteria failures | -4 Points each |
 

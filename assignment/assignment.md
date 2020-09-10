@@ -61,7 +61,9 @@ npm start -- calc-wood-needed --width 8 --length 8
 
   * To submit your assignment, push your `development` branch to GITHUB and then create a pull request into the `master` branch using GITHUB.
 
-  * You may push your code to the `development` branch as many times as you like. This is good practice to do this at least once a day if you have any changes.
+    > You may push your code to the `development` branch as many times as you like. This is good practice to do this at least once a day if you have any changes.
+
+  * Accept and merge your pull request into the `master` branch.
 
 # Grading Your Application
 
@@ -70,6 +72,11 @@ Read the [Marking Criteria](./marking-criteria.md) document to understand how th
 In testing your work, I will be running these commands:
 
 ```
+git clone [your repo]
+git checkout master
+
+tsc
+
 npm start -- calc-wood-needed --width 8 --length 8
 npm start -- calc-wood-needed --width 18 --length 8
 npm start -- calc-wood-needed --width 16 --length 24

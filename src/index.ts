@@ -12,7 +12,7 @@ yargs.command(
     // this will be the first parameter we send:
     // format:  node dist/index.js [command]
     // example: node dist/index.js calc-wall-studs
-    'calc-wall-studs',
+    'calc-wood-needed',
 
     // yargs.command paramater #2
     // describe the command so that the --help flag is helpful

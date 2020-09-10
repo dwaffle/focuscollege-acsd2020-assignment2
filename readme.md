@@ -5,21 +5,7 @@ Advanced Certificate of Software Development located in Kelowna, BC and Surrey, 
 
 ## Getting Started
 
-Your team leader will fork this repository and allow each team-mate access to read and write.
-
-## Summary
-
-## Outcome
-
-## Scenario
-
-## Assignment
-
-## Marking Criteria
-
-## Submission
-
-Create a pull request in this repository with your team completed code.
+Please read the [Assignment Requirements](./assignment/assignment.md).
 
 ## Notes
 

@@ -5,18 +5,15 @@ Advanced Certificate of Software Development located in Kelowna, BC and Surrey, 
 
 ---
 
-You can remove everything below the above line once you're ready to edit this file.
+## Instructions for using this program will go here.
+---
 
-## Getting Started
+### Example command will go here.
+---
 
-Please read the [Assignment Requirements](./assignment/assignment.md).
+### Example output and test will go here.
+--- 
 
-## Deadline for Submissions
-
-The deadline for this assignment is 5PM on TUESDAY SEPTEMBER 15th, 2020.
-
-## Notes
-
-This is a PUBLIC repository attached to your github account and something that you can demonstrate to potential employers. 
-Take care to ensure professionalism for both you and your team's sake. This will be the first entry into your professional
-portfolio.
+### Packages used
+---
+I used Yargs to parse command-line arguments.

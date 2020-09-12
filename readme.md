@@ -1,9 +1,19 @@
-# Focus College ACSD Assignment 2
-
-This respository is intended for the use of Focus College Students enrolled in the 
-Advanced Certificate of Software Development located in Kelowna, BC and Surrey, BC.
+# Installation and building
 
 ---
+
+Building the application
+```
+tsc
+```
+To run the application using Node:
+```
+node dist/index.js calc-wood-needed --width 8 --length 8
+```
+To build and run the application using npm:
+```
+npm start -- calc-wood-needed --width 8 --length 8
+```
 
 ### Example command
 ---

@@ -1,3 +1,5 @@
+import { Console } from "console";
+
 //Sizes of wood in inches.
 const twoByFourWidth = 3.5;
 const postSize = 3.5;
@@ -10,68 +12,62 @@ let distanceBetweenBoards = 16;
 //Tracks extra posts needed
 let extraPosts = 0;
 
-//Test variables for logic.
-let houseWidth = 16;
-let houseLength = 24;
+// //Test variables for logic.
+// let houseWidth = 8;
+// let houseLength = 8;
 
-//Calculate how many additional posts are needed.
-function CalculateAdditionalPostsNeeded(outerWallWidthInFeet:number)
+//How many boards are needed on floor and roof?
+function CalculateFloorAndRoofBoards(outerWallWidthInFeet:number)
 {
-    let additionalPostsNeeded = Math.floor(outerWallWidthInFeet/20) * 2;  //Round down because we need one every 20 feet.  Email to Gerald is out asking for clarification.
-    return additionalPostsNeeded;
+    return ((outerWallWidthInFeet * 12)/twoByFourLength) * 2;
 }
-
-//Calculates inner wall width.
-function CalculateInnerWallWidth(outerWallWidthInFeet:number)
+//Figure out how many additional posts are needed.
+function CalculateExtraPostsNeeded(outerWallWidthInFeet:number)
 {
-    extraPosts = CalculateAdditionalPostsNeeded(outerWallWidthInFeet);
-    console.log("Outer wall width in feet " + outerWallWidthInFeet);
-    //Accout for normal posts, then take out the extra posts if needed.  If not needed, extraPosts will be 0 * 3.5.
-    let innerWallWidth = (outerWallWidthInFeet * 12) - (postSize * 2);
-    console.log("Inner wall width in inches: " + innerWallWidth);
-    return innerWallWidth;
+    return Math.floor(outerWallWidthInFeet/20);  //Additional post needed every 20 feet.
 }
-
-//Calculate boards required for inner wall.
-function CalculateInnerWallBoards(outerWallWidthInFeet:number)
+//Calculate the inner wall size.
+function CalculateInnerWallSize(outerWallWidthInFeet:number)
 {
-    console.log("Outer wall width: " + outerWallWidthInFeet);
-    let totalBoards = CalculateInnerWallWidth(outerWallWidthInFeet)/16;
-    console.log("Total boards: " + totalBoards);
-    return totalBoards;
+    let extraPosts = CalculateExtraPostsNeeded(outerWallWidthInFeet);
+    return ((outerWallWidthInFeet * 12) - ((2 * postSize) + (2 * extraPosts)))
 }
-
-//Calculate floor boards needed.
-function CalculateFloorAndCeilingBoards(outerWallWidthInFeet:number)
+//Calculate boards needed inside wall.
+function CalculateBoardsInsideWall(outerWallWidthInFeet:number)
 {
-    let totalFloorBoards = (outerWallWidthInFeet * 12/twoByFourLength); //Account for both sides of house.
-    return totalFloorBoards;
+    let distanceInsideWall = CalculateInnerWallSize(outerWallWidthInFeet);
+    let boardsInsideWall = distanceInsideWall/16;
+    return boardsInsideWall;
 }
-
-//Account for waste
+//Add boards in wall and roof and ceiling together
+function CalcTotalBoards(longWallWidthInFeet:number, wideWallWidthInFeet:number)
+{
+   let longWallBoards = Math.ceil((CalculateBoardsInsideWall(longWallWidthInFeet) + CalculateFloorAndRoofBoards(longWallWidthInFeet))) * 2;
+   console.log("Long wall boards: " + longWallBoards)
+   let wideWallBoards = Math.ceil((CalculateBoardsInsideWall(wideWallWidthInFeet) + CalculateFloorAndRoofBoards(wideWallWidthInFeet))) * 2;
+   console.log("Wide wall boards: " + wideWallBoards);
+   let extraLongPosts = Math.ceil(CalculateExtraPostsNeeded(longWallWidthInFeet)) * 2;
+   console.log("Long wall posts: " + extraLongPosts);
+   let extraWidePosts = Math.ceil(CalculateExtraPostsNeeded(wideWallWidthInFeet)) * 2;
+   console.log("Wide wall posts: " + extraWidePosts);
+   let totalBoards = longWallBoards + wideWallBoards + 4;
+   let totalPosts = extraLongPosts + extraWidePosts;
+   return {
+       totalBoards: totalBoards, 
+       totalPosts: totalPosts
+    };
+}
+//Account for waste.
 function AccountForWaste(totalBoards:number)
 {
     return Math.ceil(totalBoards * 1.1);
 }
 
-//Calculate total boards needed for house.
-function AddUpBoards(outerLengthInFeet:number)
+export default function BuildHouse(longWallWidthInFeet:number, wideWallWidthInFeet:number)
 {
-   let length = CalculateInnerWallWidth(outerLengthInFeet);
-   let boardsOnTopAndBottom = CalculateFloorAndCeilingBoards(length);
-   let totalBoards = boardsOnTopAndBottom + 1;
-   return totalBoards;
+    let boardsAndPosts = CalcTotalBoards(longWallWidthInFeet, wideWallWidthInFeet);
+    let totalBoardsPlusWaste = AccountForWaste(boardsAndPosts.totalBoards);
+    let totalPostsPlusWaste = AccountForWaste(boardsAndPosts.totalPosts);
+    console.log("Total boards and waste: " + totalBoardsPlusWaste);
+    console.log("Total posts plus waste: " + (Number(totalPostsPlusWaste) + 4));
 }
-
-function CalculateTotalBoards(houseWidthInFeet:number, houseLengthInFeet:number)
-{
-    let totalBoards = AddUpBoards(houseWidthInFeet) + AddUpBoards(houseLengthInFeet);
-    console.log("Total boards required " + totalBoards)
-    let boardsPlusWaste = AccountForWaste(totalBoards);
-    console.log("Total boards + waste " + boardsPlusWaste);
-    let postsPlusWaste = AccountForWaste(extraPosts);
-    console.log("Total posts " + (extraPosts + 4));
-    console.log("Total posts plus waste " + (postsPlusWaste + 4));
-}
-
-CalculateTotalBoards(houseWidth, houseLength);

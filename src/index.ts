@@ -1,3 +1,5 @@
+import BuildHouse from './BoardCalculator'
+
 // import yargs to re-use code from someone else that has already 
 // solved the complexities of parsing command line arguments
 import yargs = require('yargs');
@@ -62,6 +64,8 @@ yargs.command(
 
         // inspect the output to infer how you might access the arguments
         console.log( args )
+
+        BuildHouse(args.length, args.width);
 
     }
 

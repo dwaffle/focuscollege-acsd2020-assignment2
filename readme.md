@@ -11,7 +11,7 @@ Advanced Certificate of Software Development located in Kelowna, BC and Surrey, 
 npm start -- calc-wood-needed -width 16 -length 24
 npm start -- calc-wood-needed -w 8 -l 8
 ```
-### Examples
+### Tests
 --- 
 |Test numbers| Output |Test run by |
 |------------|--------|------------|

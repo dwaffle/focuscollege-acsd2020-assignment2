@@ -14,7 +14,7 @@ function CalculateFloorAndRoofBoards(outerWallWidthInFeet:number)
 //Figure out how many additional posts are needed.
 function CalculateExtraPostsNeeded(outerWallWidthInFeet:number)
 {
-    return Math.floor(outerWallWidthInFeet/20);  //Round down to get one extra post per 20 feet.
+    return Math.floor(outerWallWidthInFeet/20.583);  //Round down to get one extra post per 20 feet and 7 inches(two posts) to account for the post size.
 }
 
 //Calculate the inner wall size.
@@ -23,7 +23,7 @@ function CalculateInnerWallSize(outerWallWidthInFeet:number)
     let extraPosts = CalculateExtraPostsNeeded(outerWallWidthInFeet);
     //Take out the space occupied by the posts. extraPosts will be 2 * 0 if no extra posts are required in a wall.
     return ((outerWallWidthInFeet * 12) - ((2 * postSize) + (2 * extraPosts)))
-}
+} 
 
 //Calculate boards needed inside wall.
 function CalculateBoardsInsideWall(outerWallWidthInFeet:number)

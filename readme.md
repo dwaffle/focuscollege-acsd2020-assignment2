@@ -2,6 +2,11 @@
 
 ---
 
+Installation
+```
+npm install
+```
+
 Building the application
 ```
 tsc
